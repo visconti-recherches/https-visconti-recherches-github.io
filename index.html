@@ -1,1 +1,228 @@
+html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANTHONY GIOVANNI VISCONTI — SITE OFFICIEL</title>
+    <style>
+        /* BLINDAGE ANTI-CAPTURE ET ANTI-COPIE SYSTEME */
+        * {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-touch-callout: none !important;
+        }
+        @media print {
+            body { display: none !important; }
+        }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f4f4f4;
+            color: #111111;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            transition: filter 0.2s ease;
+        }
+        body.blurred {
+            filter: blur(30px) brightness(0) !important;
+        }
+        
+        /* BARRE DE NAVIGATION (LES FENÊTRES) */
+        .navbar {
+            background-color: #111111;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar a {
+            display: inline-block;
+            color: #ffffff;
+            padding: 15px 25px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.95em;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .navbar a:hover, .navbar a.active {
+            background-color: #333333;
+        }
 
+        .container {
+            max-width: 850px;
+            margin: 100px auto 40px auto;
+            background: #ffffff;
+            padding: 60px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            border-top: 6px solid #111111;
+        }
+        
+        /* GESTION DU CHANGEMENT DE FENÊTRE */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.4em;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-weight: normal;
+        }
+        .subtitle {
+            text-align: center;
+            font-style: italic;
+            color: #555555;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            letter-spacing: 1px;
+        }
+        .divider {
+            height: 2px;
+            background-color: #111111;
+            margin: 30px 0;
+        }
+        h2 {
+            font-size: 1.5em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 30px;
+            border-bottom: 2px solid #111111;
+            padding-bottom: 8px;
+            color: #111111;
+        }
+        p {
+            text-align: justify;
+            text-indent: 40px;
+            margin-bottom: 25px;
+            font-size: 1.2em;
+        }
+        .tome-item {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #fafafa;
+            border-left: 4px solid #111111;
+        }
+        .tome-title {
+            font-size: 1.15em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #111111;
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        /* SCRIPT DE PASSAGE D'UNE FENÊTRE A L'AUTRE */
+        function openTab(tabId, element) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabId).classList.add("active");
+            element.classList.add("active");
+            window.scrollTo(0,0);
+        }
+
+        /* VERROUILLAGE DU CLIC DROIT ET DES TOUCHES DE CLAVIER */
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert("Propriété Privée Inaliénable — Lecture autorisée. Copie, capture et reproduction strictement interdites.");
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 80) || e.keyCode === 123 || e.keyCode === 44) {
+                e.preventDefault();
+                navigator.clipboard.writeText('');
+                alert("Commande désactivée — Protection de l'œuvre.");
+                return false;
+            }
+        });
+
+        window.addEventListener('blur', function() {
+            document.body.classList.add('blurred');
+            navigator.clipboard.writeText('');
+        });
+
+        window.addEventListener('focus', function() {
+            document.body.classList.remove('blurred');
+        });
+
+        document.addEventListener('copy', function(e) {
+            e.preventDefault();
+            return false;
+        });
+    </script>
+</head>
+<body>
+
+    <!-- BARRE DE NAVIGATION DES FENÊTRES EN HAUT -->
+    <div class="navbar">
+        <a class="tab-link active" onclick="openTab('accueil', this)">Présentation</a>
+        <a class="tab-link" onclick="openTab('oeuvres', this)">Liste d'honneur des publications</a>
+        <a class="tab-link" onclick="openTab('contact', this)">Recherche & Contact</a>
+    </div>
+
+    <div class="container">
+        <h1>Anthony Giovanni Visconti</h1>
+        <div class="subtitle">Œuvre Scientifique, Prudentielle et Historique</div>
+        
+        <div class="divider"></div>
+
+        <!-- FENÊTRE 1 : ACCUEIL & PRESENTATION -->
+        <div id="accueil" class="tab-content active">
+            <h2>Section I : Préface Générale</h2>
+            <p>[Zone sécurisée. Lorsque le site sera en ligne, cette fenêtre affichera le texte de votre préface que vous y collerez localement, sans dévoiler vos secrets à la machine.]</p>
+            
+            <h2>Section II : Préambule Général</h2>
+            <p>[Zone sécurisée. Cette fenêtre affichera votre texte d'introduction générale concernant l'enfance et le parcours de chercheur, entièrement protégée contre la capture d'écran.]</p>
+        </div>
+
+        <!-- FENÊTRE 2 : LES 6 TOMES (LA LISTE D'HONNEUR) -->
+        <div id="oeuvres" class="tab-content">
+            <h2>Nomenclature Officielle des Volumes</h2>
+            <p>Cette section dresse la liste d'honneur des volumes développés au cours de plus d'un demi-siècle de traque documentaire et de recherches cliniques. Conformément à l'absence de consentement de l'auteur, les ouvrages ne sont pas publiés sur le réseau public. Les consultations s'effectuent exclusivement sur demande écrite privée.</p>
+            
+            <div class="tome-item">
+                <span class="tome-title">TOME I : L'ENFANT DU SILENCE</span>
+                <p>Fondations de l'archéologie documentaire, émergence de la trajectoire et introduction à la quête de vérité immuable.</p>
+            </div>
+            <div class="tome-item">
+                <span class="tome-title">TOME II : LA FRAUDE DU NOM ET L'AMIRAUTÉ DE FRANCE</span>
+                <p>Analyse critique des structures d'enregistrement de l'état civil, de la sous-série G⁵ des Archives nationales et de la captivité juridique par le droit de la mer.</p>
+            </div>
+            <div class="tome-item">
+                <span class="tome-title">TOME III : LA CAPTATION BANCAIRE ET LE LOGICIEL DE 1933</span>
+                <p>Autopsie clinique de la restructuration du crédit américain, du plan Hoover, du New Deal et de l'institutionnalisation de la monnaie-dette moderne.</p>
+            </div>
+            <div class="tome-item">
+                <span class="tome-title">TOME IV : LES FICTIONS CORPORATIVES ET LE DROIT DE CAP</span>
+                <p>Analyse des fictions juridiques d'entreprises et de la structure du droit de propriété face aux juridictions administratives.</p>
+            </div>
+        </div>
+
+        <!-- FENÊTRE 3 : CONTACT -->
+        <div id="contact" class="tab-content">
+            <h2>Section III : Demandes et Correspondance</h2>
+            <p>Pour toute demande de consultation privée concernant les Tomes I à IV, veuillez adresser une correspondance motivée par voie postale ou électronique.</p>
+        </div>
+    </div>
+
+</body>
+</html>
